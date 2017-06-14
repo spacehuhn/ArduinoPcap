@@ -1,8 +1,8 @@
 # ArduinoPcap
 Create and send .pcap files using ESP8266/ESP32 and Arduino.
 
-[**Support me and my projects on Patreon!**  
-<img width="200" alt="Support me on Patreon" src="https://c5.patreon.com/external/logo/downloads_wordmark_navy.png">](https://www.patreon.com/spacehuhn)  
+**Support me and my projects on [Patreon!](https://www.patreon.com/spacehuhn)**  
+[<img width="200" alt="Support me on Patreon" src="https://c5.patreon.com/external/logo/downloads_wordmark_navy.png">](https://www.patreon.com/spacehuhn)  
 
 
 ## Installation
