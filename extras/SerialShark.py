@@ -20,7 +20,7 @@ except KeyboardInterrupt:
 try:
     canBreak = False
     while not canBreak:
-        boardRateInput = input("[?] Select a board rate (default '921600'): ")
+        boardRateInput = input("[?] Select a baudrate (default '921600'): ")
         if boardRateInput == "":
             boardRate = 921600
             canBreak = True
