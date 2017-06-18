@@ -8,6 +8,8 @@ Create and send .pcap files using ESP8266/ESP32 and Arduino.
 
 This is a proof of concept! The included examples are only for ESP8266 and ESP32, but the library can be used for other Arduinos aswell. The packet output in the examples is unfiltered and maybe malformed, **errors can occur!**  
 
+Also a big thanks to [xdavidhu](http://github.com/xdavidhu) for writing the python script to connect to Wireshark!  
+
 ## Installation
 
 Download this project and extract the .zip file to the Arduino `libraries` folder.  
