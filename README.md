@@ -18,11 +18,11 @@ For more information please read [Installing Additional Arduino Libraries](https
 **If you don't use an ESP32, you will need the [SdFat](https://github.com/greiman/SdFat) library.**
 
 Following Arduino libraries are required for the included examples:
-- [Arduino Time Library](https://github.com/PaulStoffregen/Time)  
-- [ESP8266](https://github.com/esp8266/Arduino)  
-- [ESP32](https://github.com/espressif/arduino-esp32)  
+- [Arduino Time Library](https://github.com/PaulStoffregen/Time) (for all examples)  
+- [ESP8266](https://github.com/esp8266/Arduino) (for the `esp8266_*` examples)  
+- [ESP32](https://github.com/espressif/arduino-esp32) (for the `esp32_*` examples)  
 
-For the Serialshark script:
+For the Serialshark script (the script located in `extras`):
   - [python3](https://www.python.org/downloads/)
   - [pyserial](https://github.com/pyserial/pyserial)  
   - [Wireshark](https://www.wireshark.org/#download)
