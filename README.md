@@ -64,7 +64,7 @@ It will ask you about about the serial port (you have to find that out), the bau
 
 ### Saving onto a SD-Card
 
-For that you will need a SD-Card (obviously). You can connect it direcly to the ESP8266/ESP32, but I recomment buying a SD-Card module/shield. Wire up the SPI connection (MOSI,MISO,SCL,CS,GND,VCC) to your module and basically you are ready to go!  
+For that you will need a SD-Card (obviously). You can connect it direcly to the ESP8266/ESP32, but I recommend buying a SD-Card module/shield. Wire up the SPI connection (MOSI,MISO,SCL,CS,GND,VCC) to your module and basically you are ready to go!  
 [If you don't know which pins to connect to which, just search for a pinout picture of your module]  
 
 The included examples will save a new .pcap file every 30s. If you open the serial monitor in Arduino (baudrate is 115200), you will get some more information.  
