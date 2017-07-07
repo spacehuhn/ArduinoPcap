@@ -8,7 +8,7 @@ Create and send .pcap files using ESP8266/ESP32 and Arduino.
 
 ## Please Note
 
-This is a proof of concept! The included examples are only for ESP8266 and ESP32, but the library can be used for other Arduinos aswell. The packet output in the examples is unfiltered and maybe malformed, **errors can occur!**  
+This is a proof of concept! The included examples are only for ESP8266 and ESP32, but the library can be used for other Arduinos as well. The packet output in the examples is unfiltered and maybe malformed, **errors can occur!**  
 
 Also a big thanks to [xdavidhu](http://github.com/xdavidhu) for writing the python script to connect to Wireshark!  
 
@@ -50,7 +50,7 @@ You might want to adjust the settings in the sketch (settings may be different d
 ```
 
 Also note that when you use the ESP8266 most packets will be malformed or cut off at the end.  
-I don't know why the promiscuous mode returns this mostly false data, but it's still good enough to get some MAC adresses and SSIDs. I used it successfully in various projects to [detect deauthentication packets](https://github.com/spacehuhn/DeauthDetector), [scan for client devices](https://github.com/spacehuhn/esp8266_deauther) and build a low cost WiFi [packet monitor](https://github.com/spacehuhn/PacketMonitor).  
+I don't know why the promiscuous mode returns this mostly false data, but it's still good enough to get some MAC addresses and SSIDs. I used it successfully in various projects to [detect deauthentication packets](https://github.com/spacehuhn/DeauthDetector), [scan for client devices](https://github.com/spacehuhn/esp8266_deauther) and build a low cost WiFi [packet monitor](https://github.com/spacehuhn/PacketMonitor).  
 But if you want something more reliable then have a look at the ESP32, its promiscuous mode is working way better.  
 
 ### Live capture using Wireshark
@@ -60,11 +60,11 @@ For that be sure to have everything installed - see [Dependencies](#dependencies
 
 Flash your device and be sure it is connected.  
 Then start the `SerialShark.py` (it's in the `extras` folder) with `python3 SerialShark.py`.  
-It will ask you about about the serial port (you have to find that out), the baudrate (be sure it's the same as in your sketch) and where to save the pcap file (wherever you want).  
+It will ask you about about the serial port (you have to find that out), the baud rate (be sure it's the same as in your sketch) and where to save the pcap file (wherever you want).  
 
 ### Saving onto a SD-Card
 
-For that you will need a SD-Card (obviously). You can connect it direcly to the ESP8266/ESP32, but I recomment buying a SD-Card module/shield. Wire up the SPI connection (MOSI,MISO,SCL,CS,GND,VCC) to your module and basically you are ready to go!  
+For that you will need a SD-Card (obviously). You can connect it directly to the ESP8266/ESP32, but I recommend buying a SD-Card module/shield. Wire up the SPI connection (MOSI,MISO,SCL,CS,GND,VCC) to your module and basically you are ready to go!  
 [If you don't know which pins to connect to which, just search for a pinout picture of your module]  
 
 The included examples will save a new .pcap file every 30s. If you open the serial monitor in Arduino (baudrate is 115200), you will get some more information.  
