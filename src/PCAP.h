@@ -9,10 +9,10 @@
 #define PCAP_h
 
 #include <Arduino.h>
-#if defined(ESP32) || defined(__XTENSA__)
+#include "SPI.h"
+#if defined(ESP32)
 	#include "FS.h"
 	#include "SD.h"
-	#include "SPI.h"
 #else
 	#include <SPI.h>
 	#include <SdFat.h>
@@ -24,7 +24,7 @@ class PCAP
     PCAP();
 	
     void startSerial();
-#if defined(ESP32) || defined(__XTENSA__)
+#if defined(ESP32)
 	bool openFile(fs::FS &fs);
     bool removeFile(fs::FS &fs);
 #else

@@ -15,7 +15,7 @@ void PCAP::startSerial(){
   serialwrite_32(network);
 }
 
-#if defined(ESP32) || defined(__XTENSA__)
+#if defined(ESP32)
 	/* open file on SD card (when exists) */
 	bool PCAP::openFile(fs::FS &fs){
 	  if(fs.exists(filename.c_str())) removeFile(fs);
@@ -76,8 +76,10 @@ void PCAP::closeFile(){
 void PCAP::newPacketSerial(uint32_t ts_sec, uint32_t ts_usec, uint32_t len, uint8_t* buf){
   uint32_t orig_len = len;
   uint32_t incl_len = len;
-  //if(incl_len > snaplen) incl_len = snaplen; /* safty check that the packet isn't too big (I ran into problems here) */
-   
+  
+#if defined(ESP32)
+  if(incl_len > snaplen) incl_len = snaplen; /* safty check that the packet isn't too big (I ran into problems with the ESP8266 here) */
+#endif
   serialwrite_32(ts_sec);
   serialwrite_32(ts_usec);
   serialwrite_32(incl_len);
