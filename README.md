@@ -62,6 +62,8 @@ Flash your device and be sure it is connected.
 Then start the `SerialShark.py` (it's in the `extras` folder) with `python3 SerialShark.py`.  
 It will ask you about about the serial port (you have to find that out), the baud rate (be sure it's the same as in your sketch) and where to save the pcap file (wherever you want).  
 
+The baudrate for the ESP32 example is `921600`. The baudrate for the ESP8266 example is `115200`.  
+
 ### Saving onto a SD-Card
 
 For that you will need a SD-Card (obviously). You can connect it directly to the ESP8266/ESP32, but I recommend buying a SD-Card module/shield. Wire up the SPI connection (MOSI,MISO,SCL,CS,GND,VCC) to your module and basically you are ready to go!  
