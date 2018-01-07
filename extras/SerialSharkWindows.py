@@ -1,4 +1,5 @@
-# Made by @xdavidhu (github.com/xdavidhu, https://xdavidhu.me/)
+# Original version made by @xdavidhu (github.com/xdavidhu, https://xdavidhu.me/)
+# Modified to work on windows by L0laapk3 (github.com/L0laapk3)
 
 import serial
 import io
@@ -6,11 +7,15 @@ import os
 import subprocess
 import signal
 import time
+import win32pipe, win32file
+
+import sys
 
 try:
-    serialportInput = input("[?] Select a serial port (default '/dev/ttyUSB0'): ")
+    serialportInput = raw_input("[?] Select a serial port (default COM4'): ")
+    
     if serialportInput == "":
-        serialport = "/dev/ttyUSB0"
+        serialport = "COM4"
     else:
         serialport = serialportInput
 except KeyboardInterrupt:
@@ -20,7 +25,7 @@ except KeyboardInterrupt:
 try:
     canBreak = False
     while not canBreak:
-        boardRateInput = input("[?] Select a baudrate (default '921600'): ")
+        boardRateInput = raw_input("[?] Select a baudrate (default '921600'): ")
         if boardRateInput == "":
             boardRate = 921600
             canBreak = True
@@ -37,13 +42,13 @@ try:
 except KeyboardInterrupt:
     print("\n[+] Exiting...")
     exit()
-
+    
 try:
-    filenameInput = input("[?] Select a filename (default 'capture.pcap'): ")
-    if filenameInput == "":
-        filename = "capture.pcap"
+    wiresharkCmdInput = raw_input("[?] Select wireshark location (default 'D:\Program Files\Wireshark\Wireshark.exe'): ")
+    if wiresharkCmdInput == "":
+        wiresharkCmd = ['D:\Program Files\Wireshark\Wireshark.exe', r'-i\\.\pipe\wireshark','-k']
     else:
-        filename = filenameInput
+        wiresharkCmd = [wiresharkCmdInput, r'-i\\.\pipe\wireshark','-k']
 except KeyboardInterrupt:
     print("\n[+] Exiting...")
     exit()
@@ -62,8 +67,11 @@ while not canBreak:
         continue
 
 print("[+] Serial connected. Name: " + ser.name)
+
+print("[?] Waiting for ESP boot..")
+
+
 counter = 0
-f = open(filename,'wb')
 
 check = 0
 while check == 0:
@@ -74,19 +82,30 @@ while check == 0:
     #else: print '"'+line+'"'
 
 print("[+] Starting up wireshark...")
-cmd = "tail -f -c +0 " + filename + " | wireshark -k -i -"
-p = subprocess.Popen(cmd, stdout=subprocess.PIPE,
-                       shell=True, preexec_fn=os.setsid)
+proc=subprocess.Popen(wiresharkCmd)
+
+pipe = win32pipe.CreateNamedPipe(
+    r'\\.\pipe\wireshark',
+    win32pipe.PIPE_ACCESS_OUTBOUND,
+    win32pipe.PIPE_TYPE_MESSAGE | win32pipe.PIPE_WAIT,
+    1, 65536, 65536,
+    300,
+    None)
+win32pipe.ConnectNamedPipe(pipe, None)
+
+
 
 try:
     while True:
-        ch = ser.read()
-        f.write(ch)
-        f.flush()
+        
+        data = ser.read()
+        win32file.WriteFile(pipe, data)
 except KeyboardInterrupt:
     print("[+] Stopping...")
-    os.killpg(os.getpgid(p.pid), signal.SIGTERM)
+    subprocess.call(['taskkill', '/F', '/T', '/PID', str(proc.pid)])
+except:
+    print("[+] Stopping...")
 
-f.close()
+
 ser.close()
 print("[+] Done.")
