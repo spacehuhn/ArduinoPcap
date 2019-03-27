@@ -26,9 +26,15 @@ Following Arduino libraries are required for the included examples:
 - [ESP8266](https://github.com/esp8266/Arduino) (for the `esp8266_*` examples)  
 - [ESP32](https://github.com/espressif/arduino-esp32) (for the `esp32_*` examples)  
 
-For the Serialshark script (the script located in `extras`):
+For the Serialshark**Linux** script (the script located in `extras`):
   - [python3](https://www.python.org/downloads/)
   - [pyserial](https://github.com/pyserial/pyserial)  
+  - [Wireshark](https://www.wireshark.org/#download)
+  
+For the Serialshark**Windows** script (the script located in `extras`):
+  - [python2](https://www.python.org/downloads/)
+  - [pyserial](https://github.com/pyserial/pyserial) 
+  - pypiwin32: pip install pypiwin32
   - [Wireshark](https://www.wireshark.org/#download)
 
 **Please be aware that the Serialshark script doesn't work on Windows!**
@@ -59,7 +65,7 @@ You also live capture the packets in Wireshark over the serial connection!
 For that be sure to have everything installed - see [Dependencies](#dependencies).  
 
 Flash your device and be sure it is connected.  
-Then start the `SerialShark.py` (it's in the `extras` folder) with `python3 SerialShark.py`.  
+Then start the `SerialShark.py` (it's in the `extras` folder) with `python3 SerialSharkLinux.py` or `python SerialSharkWindows.py`.  
 It will ask you about about the serial port (you have to find that out), the baud rate (be sure it's the same as in your sketch) and where to save the pcap file (wherever you want).  
 
 The baudrate for the ESP32 example is `921600`. The baudrate for the ESP8266 example is `115200`.  
