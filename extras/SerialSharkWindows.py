@@ -11,11 +11,24 @@ import win32pipe, win32file
 
 import sys
 
+import ctypes
+
+
+def is_admin():
+    try:
+        return ctypes.windll.shell32.IsUserAnAdmin()
+    except:
+        return False
+
+if not is_admin():
+    ctypes.windll.shell32.ShellExecuteW(None, u"runas", unicode(sys.executable), unicode(__file__), None, 1)
+    exit(0)
+
 try:
-    serialportInput = raw_input("[?] Select a serial port (default COM4'): ")
+    serialportInput = raw_input("[?] Select a serial port (default COM5'): ")
     
     if serialportInput == "":
-        serialport = "COM4"
+        serialport = "COM5"
     else:
         serialport = serialportInput
 except KeyboardInterrupt:
