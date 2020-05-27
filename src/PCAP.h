@@ -45,7 +45,7 @@ class PCAP
     uint16_t version_minor = 4;
     uint32_t thiszone = 0;
     uint32_t sigfigs = 0;
-    uint32_t snaplen = sizeof(int);
+    uint32_t snaplen = 2500;
     uint32_t network = 105;
 
   private:
