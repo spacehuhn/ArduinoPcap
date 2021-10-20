@@ -3,9 +3,6 @@ Create and send .pcap files using ESP8266/ESP32 and Arduino.
 
 [![Sniffing WiFi with ESP32 & ESP8266 in Wireshark](https://img.youtube.com/vi/3Ac6X6ZBQ0g/0.jpg)](https://www.youtube.com/watch?v=3Ac6X6ZBQ0g)  
 
-**Support me and my projects on [Patreon!](https://www.patreon.com/spacehuhn)**  
-[<img width="200" alt="Support me on Patreon" src="https://c5.patreon.com/external/logo/downloads_wordmark_navy.png">](https://www.patreon.com/spacehuhn)  
-
 ## Please Note
 
 This is a proof of concept! The included examples are only for ESP8266 and ESP32, but the library can be used for other Arduinos as well. The packet output in the examples is unfiltered and maybe malformed, **errors can occur!**  
