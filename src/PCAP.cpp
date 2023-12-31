@@ -39,7 +39,7 @@ void PCAP::startSerial(){
 	}
 #else
 	/* open file on SD card (when exists) */
-	bool PCAP::openFile(SdFat &SD){
+	bool PCAP::openFile(SdFs &SD){
 	  if(SD.exists(filename.c_str())) removeFile(SD);
 	  file = SD.open(filename, FILE_WRITE);
 	  if(file) {
@@ -56,7 +56,7 @@ void PCAP::startSerial(){
 	}
 
 	/* remove file from SD card */
-	bool PCAP::removeFile(SdFat &SD){
+	bool PCAP::removeFile(SdFs &SD){
 	  return SD.remove(filename.c_str());
 	}
 #endif

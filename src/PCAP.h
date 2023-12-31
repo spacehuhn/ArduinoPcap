@@ -28,8 +28,8 @@ class PCAP
 	bool openFile(fs::FS &fs);
     bool removeFile(fs::FS &fs);
 #else
-	bool openFile(SdFat &SD);
-    bool removeFile(SdFat &SD);
+	bool openFile(SdFs &SD);
+    bool removeFile(SdFs &SD);
 #endif
 	
     void flushFile();
@@ -49,7 +49,7 @@ class PCAP
     uint32_t network = 105;
 
   private:
-    File file;
+    FsFile file;
 
     void escape32(uint32_t n, uint8_t* buf);
     void escape16(uint16_t n, uint8_t* buf);
