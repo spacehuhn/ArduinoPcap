@@ -49,7 +49,7 @@ class PCAP
     uint32_t network = 105;
 
   private:
-    File file;
+    File32 file;
 
     void escape32(uint32_t n, uint8_t* buf);
     void escape16(uint16_t n, uint8_t* buf);
